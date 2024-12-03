@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.db import connections
 import random
 
+
 # recommendation_app/recommender.py
 
 from api.models import UserProfile, Work
