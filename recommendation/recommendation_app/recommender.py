@@ -30,6 +30,9 @@ def generate_recommendation(user_id):
                 'title': recommended_work.title,
                 'author': recommended_work.author,
                 'difficulty': recommended_work.difficulty,
+                'cover_url': recommended_work.cover_url,  # Assuming this field exists
+                'amazon_link': recommended_work.amazon_link,  # Assuming this field exists
+                #'description': recommended_work.description,  # Assuming this field exists
             }
         else:
             result = {'message': 'No suitable works found'}

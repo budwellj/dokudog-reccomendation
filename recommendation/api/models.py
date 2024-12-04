@@ -32,6 +32,8 @@ class Work(models.Model):
     themes = models.ManyToManyField(Theme, related_name="works")
     type = models.ForeignKey(Type, on_delete=models.SET_NULL, null=True, related_name='works')
     language = models.ForeignKey(Language, on_delete=models.SET_NULL, null=True, related_name='works')
+    amazon_link = models.URLField(blank=True, null=True, help_text="Link to the Amazon page for the work")
+    cover_url = models.URLField(blank=True, null=True, help_text="URL for the cover image of the work")
     # Additional fields as needed
 
     def __str__(self):
@@ -44,6 +46,7 @@ class UserProfile(models.Model):
     native_language = models.ForeignKey(Language, on_delete=models.SET_NULL, null=True, related_name='native_users')
     target_language = models.ForeignKey(Language, on_delete=models.SET_NULL, null=True, related_name='target_users')
     themes = models.ManyToManyField(Theme)
+    current_work = models.ForeignKey(Work, on_delete=models.SET_NULL, null=True, blank=True, related_name='current_user')
 
     def __str__(self):
         return f"{self.user.username}'s profile"
