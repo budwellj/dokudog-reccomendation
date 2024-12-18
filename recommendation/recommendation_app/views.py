@@ -2,8 +2,8 @@
 # recommendation_app/views.py
 
 from django.shortcuts import render
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
+from rest_framework.decorators import api_view # type: ignore
+from rest_framework.response import Response # type: ignore
 from .tasks import generate_recommendation_task, add
 from recommendation_app.recommender import generate_recommendation
 from django.conf import settings
@@ -19,6 +19,7 @@ def get_recommendation(request, user_id):
     result = task.get(timeout=10)  # Wait for the task to complete
     #result = generate_recommendation(user_id)
     if result:
+        #for debugging purposes, remove in prod
         print(result)
         logging.info(f"work found and sent {user_id}.")
         return Response({'recommendation': result})
